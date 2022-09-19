@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> student grade calculator</title>
+    <link rel="stylesheet" href="Calculator.css">
+</head>
+
+<body>
+    <div class="screen-body-item">
+
+        <h1 id="header"> student Grade history</h1>
+
+        <div class="app-form">
+            <div class="app-form-group">
+                Web devlopment :<input type="text" class="app-form-control" placeholder="Web devlopment" value=""
+                    id="wd">
+            </div>
+            <div class="app-form-group">
+                maths : <input type="text" class="app-form-control" placeholder="maths" id="maths">
+            </div>
+            <div class="app-form-group">
+                Computer :<input type="text" class="app-form-control" placeholder="Computer" id="Computer">
+            </div>
+            <div class="app-form-group">
+                physics : <input type="text" class="app-form-control" placeholder="physics" id="physics">
+            </div>
+            <br>
+            <div>
+                <input type="button" class="app-form-button" onclick="calcy()" name="" value="ShowPercentage">
+            </div>
+        </div>
+
+    </div>
+    <div class="app-form-group showData">
+        <p id="showData"></p>
+    </div>
+    <script>
+
+
+        const calcy = () => {
+            let wd1 = document.getElementById('wd').value;
+            let maths = document.getElementById("maths").value;
+            let Computer = document.getElementById("Computer").value;
+            let physics = document.getElementById("physics").value;
+            let grades = ""
+
+            let Tatalgrade = parseFloat(wd1) + parseFloat(maths) + parseFloat(Computer) + parseFloat(physics)
+
+
+            let perc = (Tatalgrade / 400) * 100
+
+
+
+            if (perc <= 100 && perc >= 80) {
+                grades = "A";
+            } else if (perc <= 79 && perc >= 60) {
+                grades = "B";
+            }
+            else if (perc <= 59 && perc >= 40) {
+                grades = "C";
+            } else {
+                grades = "F";
+            }
+
+            if (perc >= 39.5) {
+                document.getElementById("showData").innerHTML = `Out of 400 your ${Tatalgrade} and Percentage is ${perc} %  <br> your grade is ${grades}. you are pass`
+            }
+            else {
+                document.getElementById("showData").innerHTML = `Out of 400 your ${Tatalgrade} and Percentage is ${perc} %  <br> your grade is ${grades}. you are Fail`
+            }
+
+        }
+        perc.style.color = "green"
+
+    </script>
+</body>
+
+</html>
